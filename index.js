@@ -45,7 +45,7 @@ app.get('/contacts', function(req, res) {
                 success: false
             });
         }
-        var queryStr = 'SELECT name FROM salesforce.contact';
+        var queryStr = 'SELECT name, sfid FROM salesforce.contact';
         var query = client.query(queryStr)
         query.on('error', function(error) {
             console.log('Query errror: ' + error);

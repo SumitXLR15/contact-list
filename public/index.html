@@ -45,11 +45,13 @@
                 <table class="table" ng-if="contacts.length > 0">
                     <thead>
                         <tr>
+                            <th>Salesforce ID</th>
                             <th>Name</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="contact in contacts">
+                            <td ng-bind="contact.sfid"></td>
                             <td ng-bind="contact.name"></td>
                         </tr>
                     </tbody>
