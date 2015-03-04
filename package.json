@@ -2,6 +2,7 @@
   "name": "contact-list",
   "version": "0.1.0",
   "description": "Add contacts to Salesforce using Heroku Connect",
+  "repository": "https://github.com/lukemcfarlane/contact-list",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
