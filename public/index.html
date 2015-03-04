@@ -31,7 +31,9 @@
                                placeholder="Enter Name"
                                ng-model="newContact.Name">
                     </div>
-                  <button ng-click="save()" class="btn btn-default">Save</button>
+                    <button ng-click="save()" class="btn btn-default">Save</button>
+                    <div class="sml-loading-spinner"
+                         ng-show="isSaving">
                 </form>
             </div>
         </div>
