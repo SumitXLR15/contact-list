@@ -1,0 +1,24 @@
+{
+  "name": "contact-list",
+  "version": "0.1.0",
+  "description": "Add contacts to Salesforce using Heroku Connect",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "~4.9.x",
+    "jquery": "2.1.1",
+    "lodash": "^2.4.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "keywords": [
+    "node",
+    "connect",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
