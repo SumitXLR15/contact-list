@@ -10,17 +10,20 @@ app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.json());
 
 app.post('/contacts', function(req, res) {
+    console.log('POST: /contacts');
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         if (err) {
             console.error('Failed to connect to database: ' + err);
             res.send({
                 success: false
             });
+        } else {
+            console.log('Successfully connected to database');
         }
         var insert = 'INSERT INTO contact(name) ' +
                         'VALUES($1)';
         var newContact = req.body;
-        client.query(insert, [ newContact.Name ], function(err, result) {
+        client.query(insert, [ newContact.name ], function(err, result) {
             if(err) {
                 console.log(err);
             } else {
@@ -29,6 +32,32 @@ app.post('/contacts', function(req, res) {
                     success: true
                 });
             }
+        });
+    });
+});
+
+app.get('/contacts', function(req, res) {
+    console.log('GET: /contacts');
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        if (err) {
+            console.error('Failed to connect to database: ' + err);
+            res.send({
+                success: false
+            });
+        }
+        var queryStr = 'SELECT name FROM contact';
+        var query = client.query(queryStr)
+        query.on('error', function(error) {
+            console.log('Query errror: ' + error);
+            res.status(500);
+            res.send();
+        });
+        query.on('row', function(row, result) {
+            result.addRow(row);
+        });
+        query.on('end', function(result) {
+            res.status(200);
+            res.send(result.rows);
         });
     });
 });

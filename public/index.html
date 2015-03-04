@@ -20,6 +20,8 @@
     <body ng-controller="MainCtrl">
         <div class="main-container text-center">
             <h1>Contact List</h1>
+            <h4 class="error-indicator"
+                ng-if="isError">Oops, something went wrong.</h4>
 
             <div class="contact-form-container">
                 <form class="form-inline">
@@ -29,12 +31,29 @@
                                class="form-control" 
                                id="name" 
                                placeholder="Enter Name"
-                               ng-model="newContact.Name">
+                               ng-model="newContact.name">
                     </div>
                     <button ng-click="save()" class="btn btn-default">Save</button>
                     <div class="sml-loading-spinner"
                          ng-show="isSaving">
                 </form>
+            </div>
+
+            <div class="contact-list-container" ng-if="!isLoading">
+                <h4 class="loading-indicator"
+                    ng-if="isLoading">Loading...</h4>
+                <table class="table" ng-if="contacts.length > 0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="contact in contacts">
+                            <td ng-bind="contact.name"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>

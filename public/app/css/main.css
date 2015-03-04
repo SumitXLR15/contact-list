@@ -5,11 +5,23 @@ body {
 .main-container {
 }
 
+.main-container
+.loading-indicator {
+    margin-top: 40px;
+    color: #505050 !important;
+}
+
 .main-container 
 .contact-form-container {
     display: inline-block;
     width: 300px;
     margin-top: 40px;
+}
+
+.main-container
+.contact-list-container {
+    margin-top: 50px;
+    text-align: left;
 }
 
 .sml-loading-spinner {
