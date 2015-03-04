@@ -20,7 +20,7 @@ app.post('/contacts', function(req, res) {
         } else {
             console.log('Successfully connected to database');
         }
-        var insert = 'INSERT INTO contact(name) ' +
+        var insert = 'INSERT INTO salesforce.contact(name) ' +
                         'VALUES($1)';
         var newContact = req.body;
         client.query(insert, [ newContact.name ], function(err, result) {
@@ -45,7 +45,7 @@ app.get('/contacts', function(req, res) {
                 success: false
             });
         }
-        var queryStr = 'SELECT name FROM contact';
+        var queryStr = 'SELECT name FROM salesforce.contact';
         var query = client.query(queryStr)
         query.on('error', function(error) {
             console.log('Query errror: ' + error);
