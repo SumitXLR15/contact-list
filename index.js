@@ -20,10 +20,10 @@ app.post('/contacts', function(req, res) {
         } else {
             console.log('Successfully connected to database');
         }
-        var insert = 'INSERT INTO salesforce.contact(name) ' +
+        var insert = 'INSERT INTO salesforce.contact(lastname) ' +
                         'VALUES($1)';
         var newContact = req.body;
-        client.query(insert, [ newContact.name ], function(err, result) {
+        client.query(insert, [ newContact.lastname ], function(err, result) {
             if(err) {
                 console.log(err);
             } else {
