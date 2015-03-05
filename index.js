@@ -44,6 +44,8 @@ app.get('/contacts', function(req, res) {
             res.send({
                 success: false
             });
+        } else {
+            console.log('Successfully connected to database');
         }
         var queryStr = 'SELECT name, sfid FROM salesforce.contact';
         var query = client.query(queryStr)
